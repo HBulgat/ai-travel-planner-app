@@ -1,6 +1,5 @@
 # Web AI 旅行师
 ## Quick Start
-
 1. 修改配置
 修改docs/dev-ops/下的docker-compose-app.yml文件，将DASHSCOPE_API_KEY修改为你的阿里云百炼平台的api-key
 2. 运行
