@@ -11,5 +11,5 @@ chmod +x deploy.sh
 ```
 ### 备注
 如果镜像拉取太慢，可以下载github中的tar包：
-https://github.com/HBulgat/ai-travel-planner/releases/tag/release-v1.0.0
+https://github.com/HBulgat/ai-travel-planner-app/releases/tag/release-v1.0.0
 然后使用`docker load -i <镜像名称>.tar`命令加载镜像
