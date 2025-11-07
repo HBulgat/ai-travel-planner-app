@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  # MySQL数据库服务
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: ai_travel_planner_db
+      MYSQL_ROOT_PASSWORD: rootpassword123
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: userpassword123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - ai-travel-planner
+
+  # 后端API服务
+  backend:
+    image: hbulgat/ai-travel-planner-app:1.1
+    container_name: backend
+    restart: always
+    environment:
+      DASHSCOPE_API_KEY: sk-*****你的api-key**c4dd
+      SPRING_DATASOURCE_USERNAME: appuser
+      SPRING_DATASOURCE_PASSWORD: userpassword123
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/ai_travel_planner_db
+
+    ports:
+      - "8099:8099"
+    networks:
+      - ai-travel-planner
+
+  # 前端静态文件服务（Nginx）
+  frontend:
+    image: nginx:alpine
+    container_name: frontend
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/html:/usr/share/nginx/html
+      - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - backend
+    networks:
+      - ai-travel-planner
+
+networks:
+  ai-travel-planner:
+    driver: bridge
+volumes:
+  mysql_data:

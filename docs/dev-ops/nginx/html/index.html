@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Travel Planner</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>AI Travel Planner</h1>
+        <nav>
+            <button id="showRegister">Register</button>
+            <button id="showLogin">Login</button>
+            <button id="showChat" style="display: none;">Chat</button>
+            <button id="showTravelPlan" style="display: none;">Travel Plan</button>
+            <button id="logout" style="display: none;">Logout</button>
+        </nav>
+    </header>
+    <main>
+        <section id="registerSection" class="hidden">
+            <h2>Register</h2>
+            <form id="registerForm">
+                <input type="text" id="registerUsername" placeholder="Username" required>
+                <input type="password" id="registerPassword" placeholder="Password" required>
+                <input type="email" id="registerEmail" placeholder="Email" required>
+                <button type="submit">Register</button>
+            </form>
+            <p id="registerMessage"></p>
+        </section>
+
+        <section id="loginSection" class="hidden">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="text" id="loginUsername" placeholder="Username" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p id="loginMessage"></p>
+        </section>
+
+        <section id="chatSection" class="hidden">
+            <h2>AI Chat</h2>
+            <div class="chat-mode-select">
+                <label for="chatMode">模式：</label>
+                <select id="chatMode">
+                    <option value="plan">规划旅游行程</option>
+                    <option value="budget">预算分析</option>
+                </select>
+            </div>
+            <div id="chatOutput"></div>
+            <div id="speechStatus" class="speech-status"></div>
+            <form id="chatForm">
+                <div class="chat-input-container">
+                    <input type="text" id="chatInput" placeholder="Type your message...">
+                    <button id="micButton" class="icon-button" type="button"><i class="fas fa-microphone"></i></button>
+                    <button type="submit">Send</button>
+                </div>
+            </form>
+            <div id="chatActionBtns">
+                <button type="button" id="generatePlanBtn">生成行程计划</button>
+                <button type="button" id="confirmPlanBtn" disabled>确认行程</button>
+                <button type="button" id="generateBudgetBtn" style="display:none;">生成预算分析</button>
+                <button type="button" id="confirmBudgetBtn" style="display:none;" disabled>保存预算分析</button>
+            </div>
+            <div id="chatJsonOutput" class="json-output"></div>
+            <div id="budgetPlanSelectModal" class="modal hidden">
+                <div class="modal-content">
+                    <span class="close-modal" id="closeBudgetModal">&times;</span>
+                    <h3>选择要分析预算的行程计划</h3>
+                    <div id="budgetPlanList"></div>
+                    <button id="selectBudgetPlanBtn">确定</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="travelPlanSection" class="hidden">
+            <h2>Your Travel Plans</h2>
+            <div id="savedTravelPlans"></div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

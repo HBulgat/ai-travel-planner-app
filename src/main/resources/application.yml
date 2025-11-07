@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: ai-travel-planner-app
+  profiles:
+    active: local
