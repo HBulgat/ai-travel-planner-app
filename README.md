@@ -8,6 +8,10 @@
 chmod +x deploy.sh
 ./deploy.sh
 ```
+
+3. 运行效果
+打开浏览器输入localhost即可进入页面
+
 ### 备注
 如果镜像拉取太慢，可以下载github中的tar包：
 https://github.com/HBulgat/ai-travel-planner-app/releases/tag/release-v1.0.0
