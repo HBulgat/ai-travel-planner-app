@@ -12,9 +12,17 @@ chmod +x deploy.sh
 ```
 
 3. 运行效果
-打开浏览器输入localhost即可进入页面
+打开浏览器输入localhost即可进入页面 
+### 注册
+![img.png](img/img.png)
+### 登录
+![img.png](img/img2.png)
+### AI对话
+![img.png](img/img5.png)
+### 历史旅行计划
+![img.png](img/img666.png)
 
-### 备注
+## 备注
 如果镜像拉取太慢，可以下载github中的tar包：
 https://github.com/HBulgat/ai-travel-planner-app/releases/tag/release-v1.0.0
 然后使用`docker load -i <镜像名称>.tar`命令加载镜像
